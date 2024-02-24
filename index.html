@@ -7,12 +7,26 @@
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
 
-      
+      if (profile.active === true && reason) {
+        profile.active = false
+        profile.reason = reason
+        return profile
+      }
+
+      if(profile.active === false) {
+        profile.active = true
+        delete profile.reason
+        return profile
+      }
+      if (profile.active === true && !reason) {
+        return "confirm status manually"
+      }
     }
+
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      //let grid = 🟦 🥳 🟥 💀
     }
 
     // 👉 CHALLENGE 3
@@ -22,7 +36,7 @@
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
-    
+
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
