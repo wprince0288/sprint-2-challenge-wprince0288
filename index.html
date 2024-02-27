@@ -13,7 +13,7 @@
         return profile
       }
 
-      if(profile.active === false) {
+      if (profile.active === false) {
         profile.active = true
         delete profile.reason
         return profile
@@ -26,13 +26,32 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-      //let grid = 🟦 🥳 🟥 💀
+      // 🟦 🥳 🟥 💀
+
+      for (let idx in grid) {
+
+        if (x < 1 || x > 3 || y < 1 || y > 3) {
+          return "Invalid coordinates"
+        }
+
+        x -= 1
+        y -= 1
+
+        if (grid[x][y] === "🟥") {
+          return "🟥 💀"
+        } else if (grid[x][y] === "🟦") {
+          return "🟦 🥳"
+        }
+      }
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+  
 
     }
+    
+
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
