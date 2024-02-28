@@ -26,56 +26,73 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-      // 🟦 🥳 🟥 💀
+      // 🟦 🥳 🟥 💀 
 
-      for (let idx in grid) {
 
-        if (x < 1 || x > 3 || y < 1 || y > 3) {
-          return "Invalid coordinates"
-        }
 
-        x -= 1
-        y -= 1
+      if ((x < 1 || x > 3) || (y < 1 || y > 3)) {
+        return "invalid coordinates"
+      }
+      y -= 1
+      x -= 1
 
-        if (grid[x][y] === "🟥") {
-          return "🟥 💀"
-        } else if (grid[x][y] === "🟦") {
-          return "🟦 🥳"
-        }
+      if (grid[y][x] === "🟥") {
+        return "🟥 💀"
+      }
+      if (grid[y][x] === "🟦") {
+        return "🟦 🥳"
       }
     }
+
 
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
 
-
-      let valueZero = 0;
-      if (valueZero === 0) {
-        valueZero = false;
-      }
-
-      let valueOne = 1;
-      valueOne = valueOne || true;
-
-      for (let key in obj) {
-        if (obj[key] === null) {
-          delete obj[key];
+      for (let prop in obj) {
+        if (prop.length > 9) {
+          return "shorten all prop names to 9 chars or less"
+        }
+        if (obj[prop] === 0) {
+          obj[prop] = false
+        }
+        else if (obj[prop] === 1) {
+          obj[prop] = true
+        }
+        if (obj[prop] === null) {
+          delete obj[prop]
         }
       }
-      console.log(obj)
-
-      let propertyName = "";
-      if (propertyName.length > 9) {
-        return "shorten all prop names to 9 chars or less"
-      }
-
+      return obj
     }
 
 
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+
+      const words = text.split(" ")
+      const scrubWords = []
+
+      for (let i in words) {
+        const word = words[i]
+        let scrubWord = word
+        for (let i in forbidden) {
+          const forbiddenWord = forbidden[i]
+          if (word === forbiddenWord) {
+            let substitute = ""
+            for (let i in word) {
+              substitute += "x"
+            }
+            scrubWord = substitute
+            break
+          }
+        }
+        scrubWords.push(scrubWord)
+      }
+      return scrubWords.join(" ")
+
+
 
     }
 
